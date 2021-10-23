@@ -12,7 +12,7 @@
         {% if exps == "Empty" %}
             Please enter any expense name to find !
         {% elif exps == "Not Found" %}
-            Sorry! Noe expense matched with that name.
+            Sorry! No expense matched with that name.
         {% else %}
             {% for exp in exps %}
                 {{ exp.exp_date }} : {{ exp.exp_amount }} :  {{ exp.exp_name }}  <br/>
