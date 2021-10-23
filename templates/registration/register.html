@@ -31,7 +31,14 @@
         <br/>
         <input type="submit" value="Sign Up" class="btn"  />
     </form>
+    <span>
+        * Password Rules:<br/> 
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;> Must be 8 to 12 Characters.<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;> Must contain one alphabet [a-z], [A-Z] and at least one number [0-9]<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;> Must not contain any special Characters.<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;> Harder passwords are safe.<br/>
+    </span>
     {% if comment %}
-        {{ comment }}
+        <p style="background-color:aliceblue; width:50%; color: rgb(253, 1, 1) ; font-style: italic; " > {{ comment }}
     {% endif %}
 {% endblock %}
