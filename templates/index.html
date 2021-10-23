@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <p> Welcome to the Expenses monitoring application </p><br/>
+    <span class="label"> Please login to monitor the expenses. </span><br/><br/>
+    <a class="btn" href="login/"> Login </a>  &nbsp;&nbsp;&nbsp; / &nbsp;&nbsp;<a class="btn" href="register/"> Sign up </a>
+    <br/>
+    <br/><br/>
+    {% if messages %}
+         {% for message in messages %} 
+            {{ message }}
+         {% endfor %}
+    {% endif %}
+
+{% endblock %}

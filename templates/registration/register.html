@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form id="frm_signup"  action="../register/" method = 'POST' >
+        {% csrf_token %}
+        <table id="tbl_register" > 
+            <tr> 
+                <td>   <span class="label"> First Name  </span> </td>
+                <td> : <input type="text" class="textbox" id="txt_firstname_signin" name="txt_firstname" required="" /> <br/> </td>
+            </tr>
+            <tr>
+                <td> <span class="label"> Last Name </span> </td> 
+                <td> : <input type="text" class="textbox" id="txt_lastname_signin" name="txt_lastname" required="" /> <br/> </td>
+            </tr>
+            <tr>
+                <td> <span class="label"> Mail ID  </span> </td>
+                <td> : <input type="email" class="textbox" id="txt_email" name="txt_email" required="" /> <br/> </td>
+            </tr>
+            <br/>
+            <tr>
+                <td> <span class="label"> Username  </span> </td>
+                <td> : <input type="text" class="textbox" id="txt_username_signin" name="txt_username" required="" /> <br/> </td>
+            </tr>
+            <tr> 
+                <td> <span class="label"> Enter your password  </span> </td>
+                <td> : <input type="password" class="textbox" id="pwd_signin" name="pwd_signin" required = "" /><br/> </td>
+            </tr> 
+            <tr> <td> <span class="label"> Enter your password  Again to confirm  </span> </td>
+                <td> : <input type="password" class="textbox" id="pwd_signin_2" name="pwd_signin_2" required="" /><br/> </td>
+            </tr>
+        </table>
+        <br/>
+        <input type="submit" value="Sign Up" class="btn"  />
+    </form>
+    {% if comment %}
+        {{ comment }}
+    {% endif %}
+{% endblock %}

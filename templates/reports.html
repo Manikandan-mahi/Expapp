@@ -1,0 +1,27 @@
+{% extends 'base.html' %} 
+{% block content %}
+
+    <div id='logout' name='logout' class='logout'> 
+        <input type="button" class="btn" value="Log out" onclick="logout()"> 
+    </div>
+    <span class="txt">
+    All expenses of the month 
+    <input type="month" name="mon_picker" class="dtpk" value="{{ page_date }}"
+        id="mon_picker" onchange="js_report_by_mon()"
+    />
+    is below:
+    </span>
+    <br/><br/>
+    <span class = "txt" > 
+    Total expense of the selected month is {{ totexp }} 
+    </span>
+    <br/><br/>
+    <div class="report">
+    {% for ex in exps %}
+        {{ ex.exp_date }} :  {{ ex.exp_name }} : {{ ex.exp_amount }} <br/>
+    {% endfor %}
+    </div>
+    <br/><br/>
+    <input type = "button" value = "Home" class="btn" onclick = "go_home()" />
+
+{% endblock %} 

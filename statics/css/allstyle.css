@@ -1,0 +1,94 @@
+/*HTML parts */
+body
+{
+    background-color:burlywood;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: normal;
+    color: white;
+}
+/* classes */
+.btn
+{
+    font-size:small;
+    font-weight: bold;
+    color:rgb(8, 71, 245);
+    background-color:rgb(196, 236, 181);
+    border-color: black;
+    border-radius:20px 20px 20px 20px;
+    padding: 10px;
+    text-decoration-line: none;
+    cursor:pointer;
+}
+.del
+{
+    color: red;
+}
+
+.dtpk
+{
+    font-size: 15px;
+    font-weight: bold;
+    color:darkblue;
+    background-color: bisque;
+    border-radius: 10px;
+}
+.ftr
+{
+    bottom: 3%;
+    left: 3%;
+    position: absolute;
+}
+.txt
+{
+    font-style: italic;
+    font-weight:bold; 
+    color:rgba(28, 61, 247, 0.548);
+}
+.textbox
+{
+    border-color: darkblue;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:blue;
+    height: 25px;
+    width: 200px;
+}
+.label
+{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: medium;
+    font-weight: 300;
+    font-variant: normal;
+}
+
+.tbl
+{
+    background-color:blueviolet;
+    padding:20px; 
+    border: 3px;
+}
+
+.report
+{
+    height : 200px ; 
+    width : 50%;
+    overflow: auto;
+    background-color: azure;
+    color:blue;
+}
+.linkbutton
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    font-size: small;
+    font-stretch: semi-condensed;
+}
+/* Specific parts */
+.logout
+{
+    position: absolute;
+    top:0;
+    right: 14px;
+    font-size: 30px;
+    font-weight: bold;
+}
