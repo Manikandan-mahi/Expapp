@@ -3,25 +3,6 @@ function show() {
     document.getElementById('txt_expname').focus();
 }
 
-function js_register()
-{
-    pwd = document.getElementById('pwd_signin').value;
-    pwd_confirm = document.getElementById('pwd_signin_2').value;
-    if (pwd === pwd_confirm)
-    {
-        form_sign = document.getElementById('frm_signup');
-        form_sign.setAttribute('method', 'post');
-        form_sign.setAttribute('action', '../register/');
-        
-    }
-    else
-    {
-        var res = document.createElement("p");
-        var text = document.createTextNode("Passwords are not matched! ");
-        res.appendChild(text)
-    }
-}
-
 function addexpense() {
     var expense_name = prompt("Please enter the expense name ");
     var amount = prompt("Please enter the amount ")
@@ -43,12 +24,19 @@ function addexp()
     if (amount === null || typeof amount ==="") { amount = 0 }
     else { amount = Number(amount) }
 
-    if (desc === null || desc === "") { desc = "None" }
-    if (exp_id === null ) 
-        { window.location.href ="/add/" + expense_name + "/" + amount +"/"+ desc + "/" + sdate; }
+    if (desc === null || desc === "") 
+    { 
+        desc = "None" 
+    }
+    if (exp_id == null || exp_id == "" ) 
+    { 
+        window.location.href ="/add/" + expense_name + "/" + amount +"/"+ desc + "/" + sdate; 
+    }
     else 
-    exp_id = parseInt(exp_id);
-    { window.location.href ="/update/"+exp_id+"/"+ expense_name + "/" + amount +"/"+ desc + "/" + sdate;}
+    { 
+        exp_id = parseInt(exp_id);
+        window.location.href ="/update/"+exp_id+"/"+ expense_name + "/" + amount +"/"+ desc + "/" + sdate;
+    }
 }
 
 function showedit( exp_id, exp_name, exp_amount , exp_desc)

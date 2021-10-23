@@ -69,7 +69,7 @@ def v_home(request,sdate):
         for e in ex:
             totexp = totexp + e.exp_amount
         context = {'exps':ex, 'appdate':sdate , 'total':totexp, 'expone': False}
-        return render(request,'Homepage.html',context)
+        return render(request,'homepage.html',context)
 
 
 def v_add(request,expense, amount,desc,expdate):
@@ -107,7 +107,7 @@ def v_report(request,mon,yr):
     exps_o = exps.order_by('exp_date')
     exp_list = [e.exp_amount for e in exps]
     totexp = sum(exp_list)
-    return render(request,'Reports.html', { 'exps' : exps_o, 'page_date': page_date , 'totexp' : totexp })
+    return render(request,'reports.html', { 'exps' : exps_o, 'page_date': page_date , 'totexp' : totexp })
 
 def v_find(request,p_exp_name = " "):
     if p_exp_name == " ":
