@@ -22,10 +22,10 @@ def v_register(request):
         formdate = date.today()
         if User.objects.filter(username = username).exists():
             comment = 'Username is taken'
-            return render(request,'registration/register.html', {'title': 'Sign In', 'comment': comment})
+            return render(request,'register/register.html', {'title': 'Sign In', 'comment': comment})
         elif User.objects.filter(email=umail).exists():
             comment = 'Email is taken'
-            return render(request,'registration/register.html', {'title': 'Sign In', 'comment': comment})
+            return render(request,'register/register.html', {'title': 'Sign In', 'comment': comment})
         else:
             if 8 <= len(passwd) <= 12:
                 if passwd == confirm_passwd:
@@ -35,12 +35,12 @@ def v_register(request):
                     messages.success(request, "Successfully signed in! Please use the login window to login now...")
                     return redirect("Index")
                 else:
-                    return render(request,'registration/register.html', {'title': 'Sign In', 'comment':'Passwords are not matching!' })
+                    return render(request,'register/register.html', {'title': 'Sign In', 'comment':'Passwords are not matching!' })
             else:
-                return render(request,'registration/register.html', 
+                return render(request,'register/register.html', 
                 {'title': 'Sign In', 'comment':'Passwords length is not matching! It should be within 8 to 12 characters.' })
     else:
-        return render(request,'registration/register.html', {'title': 'Sign In'})
+        return render(request,'register/register.html', {'title': 'Sign In'})
 
 
 def v_login(request):
@@ -55,11 +55,11 @@ def v_login(request):
                 exp = Expense.objects.filter(exp_date=formdate)
                 return redirect(f"/home/{str(formdate)}",{'user':user, 'exps':exp, 'appdate' : formdate})
             else:
-                return render(request,'registration/login.html',{ 'comment' :'Please check your Email and Password '} )
+                return render(request,'register/login.html',{ 'comment' :'Please check your Email and Password '} )
         else:
-            return render(request,'registration/login.html', {'comment' : 'User not found ! '})
+            return render(request,'register/login.html', {'comment' : 'User not found ! '})
     elif request.method == 'GET':
-        return render(request,'registration/login.html')
+        return render(request,'register/login.html')
 
 def v_home(request,sdate):
     if request.method== 'GET':

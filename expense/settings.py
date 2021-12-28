@@ -57,7 +57,7 @@ ROOT_URLCONF = 'expense.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [ TEMPLATES_DIR, os.path.join(TEMPLATES_DIR,"registration")],
+        'DIRS': [ TEMPLATES_DIR, os.path.join(TEMPLATES_DIR,"register")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
