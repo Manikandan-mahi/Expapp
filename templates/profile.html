@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  Hi {{ user.first_name }} !
+  <br/> Here you can edit your profile.
+  <form action="javascript:updateProfile()" class="editprofile" >
+    <img src="{% static "imgs/default.jpg" %}" height="50px" width="50px"  >
+    <p> Your Name  : <input type="text" value = "{{ user.first_name }}" class = "txt" /> </p>
+    <p> Your Email : <input type="text" value= "{{ user.email }}" class="txt" > </p>
+
+    <input type="submit" value="Update" class="btn btnsub" />
+  </form>
+
+{% endblock %}

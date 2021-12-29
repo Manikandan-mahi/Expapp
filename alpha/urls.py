@@ -10,6 +10,7 @@ urlpatterns = [
     path('update/<int:eid>/<str:expense>/<int:amount>/<str:desc>/<str:expdate>', views.v_update, name='UpdateExp'),
     path('delete/<int:expid>/<str:expdate>', views.v_delete, name='Delete'),
     path('home/<str:sdate>',views.v_home,name='Home'),
+    path('profile/', views.v_profile, name="Profile"),
     path('report/<str:mon>/<str:yr>',views.v_report,name="Report"),
     path('find/<str:p_exp_name>' , views.v_find , name = "Find" ),
     path('find/' , views.v_find , name = "Find" ),

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
     <form id="frm_signup"  action="../register/" method = 'POST' >
         {% csrf_token %}
@@ -30,6 +31,8 @@
         </table>
         <br/>
         <input type="submit" value="Sign Up" class="btn"  />
+        <input type="button" value="Back" class="btn" onclick="go_index()" />
+
     </form>
     <span>
         * Password Rules:<br/> 
@@ -39,6 +42,8 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;> Harder passwords are safe.<br/>
     </span>
     {% if comment %}
-        <p style="background-color:aliceblue; width:50%; color: rgb(253, 1, 1) ; font-style: italic; " > {{ comment }}
+        <p class="comment" > {{ comment }}
     {% endif %}
+
+    <script type="text/javascript" src="{% static "js/signup.js" %}" ></script>
 {% endblock %}

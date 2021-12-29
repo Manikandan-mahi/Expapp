@@ -71,6 +71,8 @@ def v_home(request,sdate):
         context = {'exps':ex, 'appdate':sdate , 'total':totexp, 'expone': False}
         return render(request,'Homepage.html',context)
 
+def v_profile(request):
+    return render(request, "profile.html")
 
 def v_add(request,expense, amount,desc,expdate):
     mon_list = ['None','January', 'February', 'March', 'April', 'May', 'June', 'July',

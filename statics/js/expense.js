@@ -3,6 +3,14 @@ function show() {
     document.getElementById('txt_expname').focus();
 }
 
+function go_index(){
+    window.location.href = "/";
+}
+
+function go_profile(){
+    window.location.href = "/profile/";
+}
+
 function js_register()
 {
     pwd = document.getElementById('pwd_signin').value;
@@ -44,11 +52,13 @@ function addexp()
     else { amount = Number(amount) }
 
     if (desc === null || desc === "") { desc = "None" }
-    if (exp_id === null ) 
-        { window.location.href ="/add/" + expense_name + "/" + amount +"/"+ desc + "/" + sdate; }
-    else 
-    exp_id = parseInt(exp_id);
-    { window.location.href ="/update/"+exp_id+"/"+ expense_name + "/" + amount +"/"+ desc + "/" + sdate;}
+    if (exp_id == null || exp_id == "" ) { 
+        window.location.href ="/add/" + expense_name + "/" + amount +"/"+ desc + "/" + sdate; 
+    }
+    else { 
+        exp_id = parseInt(exp_id);
+        window.location.href ="/update/"+exp_id+"/"+ expense_name + "/" + amount +"/"+ desc + "/" + sdate;
+    }
 }
 
 function showedit( exp_id, exp_name, exp_amount , exp_desc)

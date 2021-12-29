@@ -13,12 +13,30 @@
     {% endblock %}
 </head>
 <body>
-    {% block content %}
-    {% endblock %}
-
- <footer id="footer" class= "ftr" > 
-     Website created and maintained by " Ramakrishnan P " <br/>
-     Contact by phone : +91 9842378754,  Mail : ramakrishnanp30798@gmail.com
- </footer>   
+    <header class="header">
+        
+        {% if user.is_authenticated %}
+        <div> <button class="app-title" onclick="go_home()" > Expense Manager </button></div>
+        <nav id="nh" class="nav-header">
+            <button onclick="go_profile()" class="btn"> {{ user.first_name }} </button> 
+            <input type="button" class="btn" value="Log out" onclick="logout()"> 
+        </nav>
+        {% else %}
+        <div> <button class="app-title" onclick="go_index()" > Expense Manager </button></div>
+        <nav id="nh" class="nav-header">
+            <a href="login/" class="btn" > Login </a> or 
+            <a href="register/" class="btn" > Sign up </a>
+        </nav>    
+        {% endif %}
+    </header>
+    <section class="app-body">
+        {% block content %}
+        {% endblock %}
+    </section>
+    <br/>
+    <footer id="footer" class= "ftr" > 
+        Website created and maintained by " Ramakrishnan P " <br/>
+        Contact by phone : +91 9842378754,  Mail : ramakrishnanp30798@gmail.com
+    </footer>   
 </body>   
 </html>

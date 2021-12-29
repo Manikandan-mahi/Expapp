@@ -1,15 +1,27 @@
 /*HTML parts */
-*{
-    top: 0;
-    margin: 0;
-}
 body
 {
-    background-color:rgb(214, 190, 158);
+    background-color:rgb(108 112 169);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-style: normal;
     color: white;
+
 }
+.app-title{
+    font-size: 30px;
+    font-weight: bold;
+    font-style: normal;
+    background-color: inherit;
+    border: 0;
+    cursor:pointer;
+}
+/* UPPER PART OF THE DOCUMENT */
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 /* classes */
 .btn
 {
@@ -23,9 +35,17 @@ body
     text-decoration-line: none;
     cursor:pointer;
 }
+
+.btnsub{
+    width: fit-content;
+    align-self: center;
+    justify-self: center;
+}
 .del
 {
     color: red;
+    padding: 2px;
+    margin: 7px;
 }
 
 .dtpk
@@ -36,11 +56,17 @@ body
     background-color: bisque;
     border-radius: 10px;
 }
+.app-body{
+    height: 520px;
+    width: auto;
+    overflow-y: scroll;
+}
 .ftr
 {
+    background-color: rgb(231, 79, 79);
     bottom: 3%;
     left: 3%;
-    position: absolute;
+
 }
 .txt
 {
@@ -90,9 +116,20 @@ body
 /* Specific parts */
 .logout
 {
-    position: absolute;
-    top:0;
-    right: 14px;
     font-size: 30px;
     font-weight: bold;
+}
+
+.comment{
+    background-color:aliceblue; 
+    width:50%; 
+    color: rgb(253, 1, 1) ; 
+    font-style: italic;
+}
+.editprofile{
+    display:flex;
+    flex-direction: column;
+    width: fit-content;
+    margin-top: 10px;
+    align-items: center;
 }
