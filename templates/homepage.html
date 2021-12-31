@@ -5,12 +5,12 @@
 {% endblock %}
 {% block content %}
     <br/>
-    <span class="txt">
+    <span class="txt txt-home">
     Welcome {{ user.first_name }}! 
     </span>
     <br/><br/>
     <div>
-        <span class="txt"> 
+        <span class="txt txt-home"> 
            Total expense amount for the day 
            <input type="date" id="appdate" name='appdate' class="dtpk" 
            value="{{ appdate }}" onchange="viewall()" />
@@ -32,20 +32,22 @@
                <input type="submit" value="Save" class="btn"/>
             </form>          
        </div>
-   </div>
+   </div> 
+   <div class="div-menus">
         <input type="button" class="btn" id="btn_showAdd" name="btn_showAdd" value="Add Expense" onclick="show()" />
         <input type="button" class="btn" value="Report" onclick="js_report()" />
         <input type="button" class="btn" value="Find Expense" onclick="js_goto_find()" />
-    <div>
+    </div>
+    <div class="report" >
        <br/>   
-       
-        <table id="exptable" class="tbl" > 
-            <tr> <th> </th> <th> Expense name </th> <th> Amount (In Rs.) </th> <th> Description about the Expense </th></tr>
+       <!--This table needs to be redesigned with CSS GRID or Flexbox -->
+        <table id="exptable" > 
+               <thead><tr> <th> </th> <th> Expense name </th> <th> Amount (In Rs.) </th> <th> Description about the Expense </th> <th> Edit </th> <th> Delete </th> </tr> </thead> 
             {% for exp in exps %}
             <tr>
                 <td>  <p hidden="" id="p_id" > {{ exp.id }} </p> </td>
                 <td> {{ exp.exp_name }} </td>  
-                <td> {{ exp.exp_amount }} </td>
+                <td class="amount" > {{ exp.exp_amount }} </td>
                 <td> {{ exp.exp_desc }} </td>
                 <td> 
                     <input type="button" value="✎" class = "del" onclick="showedit('{{ exp.id }}', '{{ exp.exp_name }}', ' {{ exp.exp_amount }}' , '{{ exp.exp_desc }}' )" > 
@@ -56,8 +58,15 @@
             </tr>    
             {% endfor %}
         </table>
-        <br/> <br/>
-       
+
+    <!--
+    <div class="tbl-head">
+            
+        </div>
+        <div class="tbl-data">
+
+        </div>
+    -->
     </div>
     <br/><br/>
     <script type="text/javascript" src="{% static "js/entry.js" %}" ></script>   

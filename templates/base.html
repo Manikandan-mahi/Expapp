@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyExp</title>
     <link rel="icon" href="{% static "imgs/expimg.png" %}" type="image/icon type">
+    <link rel="stylesheet" href="{% static "css/base.css" %}" type="text/css">
     <link rel="stylesheet" href="{% static "css/allstyle.css" %}" type="text/css">
     <script src="{% static "js/expense.js" %}"> </script>
     {% block head %}
@@ -16,15 +17,15 @@
     <header class="header">
         
         {% if user.is_authenticated %}
-        <div> <button class="app-title" onclick="go_home()" > Expense Manager </button></div>
+        <div class="div-title "> <button class="app-title" onclick="go_home()" > Expense Manager </button></div>
         <nav id="nh" class="nav-header">
-            <button onclick="go_profile()" class="btn"> {{ user.first_name }} </button> 
-            <input type="button" class="btn" value="Log out" onclick="logout()"> 
+            <input type="button" class="btn" onclick="go_profile()" value= "{{ user.first_name }}" /> 
+            <input type="button" class="btn" onclick="logout()" value="Log out" /> 
         </nav>
         {% else %}
-        <div> <button class="app-title" onclick="go_index()" > Expense Manager </button></div>
+        <div class="div-title"> <button class="app-title" onclick="go_index()" > Expense Manager </button></div>
         <nav id="nh" class="nav-header">
-            <a href="login/" class="btn" > Login </a> or 
+            <a href="login/" class="btn" > Login </a>  or 
             <a href="register/" class="btn" > Sign up </a>
         </nav>    
         {% endif %}
@@ -38,5 +39,5 @@
         Website created and maintained by " Ramakrishnan P " <br/>
         Contact by phone : +91 9842378754,  Mail : ramakrishnanp30798@gmail.com
     </footer>   
-</body>   
+ </body>   
 </html>

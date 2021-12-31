@@ -1,0 +1,8 @@
+@media screen and (max-width:500px)
+{
+  .nav-bar{
+    color: black;
+    
+    display:none;
+  }
+}

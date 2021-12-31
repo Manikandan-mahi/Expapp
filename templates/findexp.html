@@ -1,12 +1,10 @@
 {% extends 'base.html' %} 
 {% load static %}
 {% block content %}
-    <div id='logout' name='logout' class='logout'> 
-        <input type="button" class="btn" value="Log out" onclick="logout()"> 
-    </div>
     Please enter the expense name to find that. <br/><br/>
     <input type="text" name="txt_exp" id="txt_exp" class = "textbox"  /> 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type = "button" id="btn_find" name="btn_find" value = "Find" class= "btn" onclick= "js_find()" /> 
+    <input type = "button" value = "Home" class="btn" onclick = "go_home()" />
     <br/> <br/>
     <div class= "report" >
         {% if exps == "Empty" %}
@@ -22,7 +20,7 @@
     </div>
     <br/>    
     
-    <input type = "button" value = "Home" class="btn" onclick = "go_home()" />
+    
     
     <script type="text/javascript" src="{% static "js/find.js" %}" ></script>   
 

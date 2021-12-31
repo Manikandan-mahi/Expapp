@@ -1,39 +1,103 @@
-/*HTML parts */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*Body part */
 body
 {
-    background-color:rgb(108 112 169);
+    background-image: linear-gradient(to right, rgba(241, 171, 238, 0.596), rgba(108, 218, 108, 0.582)) , url('../imgs/inry-expense-management.svg');
+    background-position: top;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-style: normal;
-    color: white;
-
+    color: black;
+    position: relative;
+    margin: 2vh 2vw;
 }
+/* UPPER PART OF THE DOCUMENT */
 .app-title{
     font-size: 30px;
     font-weight: bold;
     font-style: normal;
     background-color: inherit;
     border: 0;
+    border-radius: 20px;
+    padding: 5px;
     cursor:pointer;
+    animation: welcome 3s ease;
 }
-/* UPPER PART OF THE DOCUMENT */
+
 .header{
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-/* classes */
+.div-title
+{
+    background-color: rgba(143, 188, 143, 0);
+}
+.app-title:hover{
+    border-radius: 20px;
+    padding: 5px;
+    box-shadow: 0 10px 20px dimgrey;
+}
+.welcome-lines{ 
+    margin-top: 100px;
+}
+
+/* CENTER PART OF THE DOCUMENT */
+.app-body{
+    height: 73vh;
+    width: auto;
+    overflow-y: scroll;
+}
+
+.sec-index{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: space-between;
+    margin-top: 200px;
+}
+
+.el-1{
+    background-color: rgba(216, 163, 216, 0.527);
+}
+
+.el-2{
+    background-color: rgba(216, 163, 216, 0.508);
+}
+.el-3{
+    background-color: rgba(216, 163, 216, 0.532);
+}
+/* BOTTOM PART OF THE DOCUMENT */
+
+.ftr
+{
+    background-color: rgb(160, 216, 133);
+    color: rgb(15, 14, 14);
+
+}
+
+/* COMMON ELEMENTS */
+
 .btn
 {
     font-size:small;
     font-weight: bold;
     color:rgb(8, 71, 245);
     background-color:rgb(196, 236, 181);
-    border-color: black;
-    border-radius:20px 20px 20px 20px;
+    border: 2px solid black;
+    border-radius: 20px;
+    
     padding: 10px;
     text-decoration-line: none;
     cursor:pointer;
+}
+
+.btn:hover{
+    background-color: rgb(150, 229, 231);
 }
 
 .btnsub{
@@ -56,32 +120,38 @@ body
     background-color: bisque;
     border-radius: 10px;
 }
-.app-body{
-    height: 520px;
-    width: auto;
-    overflow-y: scroll;
-}
-.ftr
-{
-    background-color: rgb(231, 79, 79);
-    bottom: 3%;
-    left: 3%;
 
-}
+
 .txt
 {
     font-style: italic;
-    font-weight:bold; 
-    color:rgba(28, 61, 247, 0.548);
+    font-weight: 800;
+    color:rgba(28, 61, 247, 0.89);
+}
+
+.txt-home{
+    font-weight: bold;
+}
+.exp-amount{
+    color: darkgreen;
 }
 .textbox
 {
-    border-color: darkblue;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color:blue;
-    height: 25px;
-    width: 200px;
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: darkviolet;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    height: 30px;
+    width: 80%;
+    margin-top: 15px;
+
 }
+
+.textbox:focus{
+    border-color: deeppink;
+}
+
+
 .label
 {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -92,19 +162,35 @@ body
 
 .tbl
 {
-    background-color:blueviolet;
     padding:20px; 
     border: 3px;
+}
+table{
+    width: 100%;
+}
+thead{
+    background-color: cyan;
+}
+thead:hover{
+    background-color: rgb(233, 110, 53);
 }
 
 .report
 {
-    height : 200px ; 
-    width : 50%;
-    overflow: auto;
-    background-color: azure;
+    height : 57vh ; 
+    width : 94vw;
+    overflow-y: scroll;
+    background-color: rgb(198, 236, 236);
     color:blue;
+    margin-top: 10px;
 }
+
+
+.amount{
+    text-align: center;
+    justify-content: center;
+}
+
 .linkbutton
 {
     font-family: Arial, Helvetica, sans-serif;
@@ -113,13 +199,15 @@ body
     font-size: small;
     font-stretch: semi-condensed;
 }
-/* Specific parts */
+/* SPECIFIC ELEMENTS */
 .logout
 {
     font-size: 30px;
     font-weight: bold;
 }
-
+.div-menus{
+    margin-top: 20px;
+}
 .comment{
     background-color:aliceblue; 
     width:50%; 
@@ -133,3 +221,22 @@ body
     margin-top: 10px;
     align-items: center;
 }
+.login-page{
+    margin-top: 50px;
+}
+.lbl-txt{
+    padding: 20px;
+}
+/* ANIMATION DECLARATIONS */
+
+@keyframes welcome{
+    0%{
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
