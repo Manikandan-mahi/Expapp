@@ -10,18 +10,19 @@
     </span>
     <br/><br/>
     <div>
-        <span class="txt txt-home"> 
-           Total expense amount for the day 
-           <input type="date" id="appdate" name='appdate' class="dtpk" 
+        <input type="date" id="appdate" name='appdate' class="dtpk" 
            value="{{ appdate }}" onchange="viewall()" />
-            is : {{ total }} 
+
+        <span class="txt txt-home"> 
+           <p>Total Expense amount for the day is : {{ totexp }}  </p>
+           <p>Total Income for the day is : {{ totinc }} </p>
         </span>
     </div>
 
 
-    <div class="bgm" id="container">
+    <div class="bgm_exp" id="container_exp">
        <div class="modal">
-        <div class="close" > + </div>
+        <div class="close_exp" > + </div>
            
             <img src="{% static "imgs/unnamed.png" %}" height="50px" width="50px" alt="expense icon">
             <form action="javascript:addexp()" >
@@ -34,9 +35,9 @@
        </div>
    </div> 
    <div class="div-menus">
-        <input type="button" class="btn" id="btn_showAdd" name="btn_showAdd" value="Add Expense" onclick="show()" />
-        <input type="button" class="btn" value="Report" onclick="js_report()" />
-        <input type="button" class="btn" value="Find Expense" onclick="js_goto_find()" />
+        <input type="button" class="btn" id="btn_showAdd" name="btn_showAdd" value="Add Expense" onclick="show_exp()" />
+        
+        <input type="button" class="btn" value="Find Expense" onclick="go_find()" />
     </div>
     <div class="report" >
        <br/>   
@@ -58,17 +59,48 @@
             </tr>    
             {% endfor %}
         </table>
-
-    <!--
-    <div class="tbl-head">
-            
-        </div>
-        <div class="tbl-data">
-
-        </div>
-    -->
     </div>
     <br/><br/>
+
+    <div class="bgm_inc" id="container_inc">
+       <div class="modal">
+        <div class="close_inc" > + </div>
+           
+            <img src="{% static "imgs/unnamed.png" %}" height="50px" width="50px" alt="note icon">
+            <form action="javascript:addinc()" >
+               <input type="text" hidden="" id="inc_id" />
+               <input type="text" class="inp" id="txt_incname" name="txt_incname" placeholder="Enter the Income name" required />
+               <input type="text" class="inp" id="txt_incamt" name="txt_incamt" placeholder="Enter the amount" required />
+               <textarea  rows=3 cols=10 class="inp" id="txt_description" name="txt_description" placeholder="Feel free to describe the Income here! Kindly do not include slash(/) ."></textarea>
+               <input type="submit" value="Save" class="btn"/>
+            </form>          
+       </div>
+   </div> 
+    <div class="div-menus">
+        <input type="button" class="btn" id="btn_showAdd" name="btn_showAdd" value="Add Income" onclick="show_inc()" />
+        <input type="button" class="btn" value="Find Income" onclick="go_find()" />
+    </div>
+    <div class="report" >
+       <br/>   
+       <!--This table needs to be redesigned with CSS GRID or Flexbox -->
+        <table id="exptable" > 
+               <thead><tr> <th> </th> <th> Income name </th> <th> Amount (In Rs.) </th> <th> Description about the Income </th> <th> Edit </th> <th> Delete </th> </tr> </thead> 
+            {% for inc in incs %}
+            <tr>
+                <td>  <p hidden="" id="p_id" > {{ inc.id }} </p> </td>
+                <td> {{ inc.inc_name }} </td>  
+                <td class="amount" > {{ inc.inc_amount }} </td>
+                <td> {{ inc.inc_desc }} </td>
+                <td> 
+                    <input type="button" value="✎" class = "del" onclick="showedit('{{ exp.id }}', '{{ exp.exp_name }}', ' {{ exp.exp_amount }}' , '{{ exp.exp_desc }}' )" > 
+                </td>
+                <td>  
+                    <input type="button" value="✘" class = "del" onclick="deleteexpense( '{{ exp.id }}' )" > 
+                </td>
+            </tr>    
+            {% endfor %}
+        </table>
+    </div> 
     <script type="text/javascript" src="{% static "js/entry.js" %}" ></script>   
 
 {% endblock %} 

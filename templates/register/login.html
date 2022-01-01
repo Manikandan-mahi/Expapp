@@ -3,17 +3,6 @@
 {% block content %}
     <form id="frm_login" action="../login/" method="POST">
         {% csrf_token %}
-        <!-- <table class="tbl">
-            <tr>
-                <td> <span class="label"> Enter your username : </span> </td>
-                <td> &nbsp;&nbsp;&nbsp; <input type="text" class="textbox" id="txt_username" name="txt_username" required /> <br/> </td>
-            </tr>
-            <tr>
-                <td> <span class="label"> Enter your password : </span> </td>
-                <td> &nbsp;&nbsp;&nbsp; <input type="password" class="textbox" id="pwd_login" name="pwd_login" required /><br/> </td>
-            </tr>
-        </table>
-    -->
     <div class="login-page"> 
         <div class="lbl-txt">
            <p>Your username</p>  <input type="text" class="textbox" id="txt_username" name="txt_username" required /> 

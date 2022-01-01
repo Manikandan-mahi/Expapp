@@ -15,33 +15,6 @@ body
     margin: 2vh 2vw;
 }
 /* UPPER PART OF THE DOCUMENT */
-.app-title{
-    font-size: 30px;
-    font-weight: bold;
-    font-style: normal;
-    background-color: inherit;
-    border: 0;
-    border-radius: 20px;
-    padding: 5px;
-    cursor:pointer;
-    animation: welcome 3s ease;
-}
-
-.header{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.div-title
-{
-    background-color: rgba(143, 188, 143, 0);
-}
-.app-title:hover{
-    border-radius: 20px;
-    padding: 5px;
-    box-shadow: 0 10px 20px dimgrey;
-}
 .welcome-lines{ 
     margin-top: 100px;
 }
@@ -142,9 +115,14 @@ body
     border-color: darkviolet;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     height: 30px;
-    width: 80%;
+    width: inherit;
     margin-top: 15px;
+}
 
+@media screen and (max-width:500px){
+    .textbox{
+        width: 80vw;
+    }
 }
 
 .textbox:focus{
@@ -170,6 +148,7 @@ table{
 }
 thead{
     background-color: cyan;
+    border: none;
 }
 thead:hover{
     background-color: rgb(233, 110, 53);
@@ -217,16 +196,41 @@ thead:hover{
 .editprofile{
     display:flex;
     flex-direction: column;
+    gap: 30px;
     width: fit-content;
-    margin-top: 10px;
+    margin-top: 5vh;
     align-items: center;
 }
+.profile-picture{
+    height: 100px;
+    width: 100px;
+}
+
 .login-page{
     margin-top: 50px;
 }
 .lbl-txt{
     padding: 20px;
 }
+/* FOR SIGN UP PAGE*/
+.signup-part{
+    display: flex;
+    flex-direction: column;
+}
+.pswd-rules{
+    padding: 16px;
+    margin-top: 15px;
+}
+.pswd-rules ul{
+    list-style: none;
+}
+.pswd-rules li {
+    margin-left: 40px;
+    color: blueviolet;
+}
+
+
+
 /* ANIMATION DECLARATIONS */
 
 @keyframes welcome{

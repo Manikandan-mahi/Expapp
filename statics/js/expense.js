@@ -1,6 +1,12 @@
-function show() {
-    document.getElementById('container').setAttribute("style", "display:flex");
+function show_exp() {
+    document.getElementById('container_exp').setAttribute("style", "display:flex");
     document.getElementById('txt_expname').focus();
+}
+
+function show_inc(){
+    document.getElementById('container_inc').setAttribute("style", "display:flex");
+    document.getElementById('txt_incname').focus();
+    
 }
 
 function go_index(){
@@ -8,6 +14,26 @@ function go_index(){
 }
 
 function go_profile(){
+    window.location.href = "/profile/";
+}
+
+function previewFile() {
+    var preview = document.getElementById('profile_pic');
+    var file    = document.getElementById('profile-img-chooser').files[0];
+    var reader  = new FileReader();
+  
+    reader.onloadend = function () {
+      preview.src = reader.result;
+    }
+  
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      preview.src = "";
+    }
+  }
+
+function updateProfile(){
     window.location.href = "/profile/";
 }
 
@@ -61,15 +87,47 @@ function addexp()
     }
 }
 
-function showedit( exp_id, exp_name, exp_amount , exp_desc)
+
+function addinc()
 {
-    show();
+    var inc_id = document.getElementById('inc_id').value;
+    var inc_name = document.getElementById('txt_incname').value;
+    var amount = document.getElementById('txt_incamt').value;
+    var desc = document.getElementById('txt_description').value;
+    var ddate = document.getElementById('appdate').value;
+    var sdate = ddate.toString();
+    if (amount === null || typeof amount ==="") { amount = 0 }
+    else { amount = Number(amount) }
+
+    if (desc === null || desc === "") { desc = "None" }
+    if (inc_id == null || inc_id == "" ) { 
+        window.location.href ="/add_inc/" + inc_name + "/" + amount +"/"+ desc + "/" + sdate; 
+    }
+    else { 
+        inc_id = parseInt(inc_id);
+        window.location.href ="/update_inc/"+inc_id+"/"+ inc_name + "/" + amount +"/"+ desc + "/" + sdate;
+    }
+}
+
+
+function showedit_exp( exp_id, exp_name, exp_amount , exp_desc)
+{
+    show_exp();
     document.getElementById('txt_expname').value = exp_name;
     document.getElementById('txt_expamt').value = exp_amount;
     document.getElementById('txt_description').value = exp_desc;
     document.getElementById('exp_id').value = exp_id ;
 }
 
+
+function showedit_inc( inc_id, inc_name, inc_amount , inc_desc)
+{
+    show_inc();
+    document.getElementById('txt_incname').value = inc_name;
+    document.getElementById('txt_incamt').value = inc_amount;
+    document.getElementById('txt_description').value = inc_desc;
+    document.getElementById('inc_id').value = inc_id ;
+}
 
 function deleteexpense(expid) {
     expid = parseInt(expid);
@@ -78,6 +136,13 @@ function deleteexpense(expid) {
     window.location.href = "/delete/"+expid+"/"+sdate;
 }
 
+
+function deleteincome(incid) {
+    incid = parseInt(incid);
+    var ddate = document.getElementById('appdate').value;
+    var sdate = ddate.toString();
+    window.location.href = "/delete/"+incid+"/"+sdate;
+}
 
 function js_report()
 {
@@ -101,7 +166,7 @@ function js_report_by_mon()
     
 }
 
-function js_goto_find()
+function go_find()
 {
     window.location.href = "/find/";
 }
@@ -117,7 +182,6 @@ function viewall()
     var ddate = document.getElementById('appdate').value;
     var sdate = ddate.toString();
     window.location.href = "/home/" + sdate;
-   // document.getElementById('appdate').value=ddate;
 }
 
 function go_home()
@@ -131,3 +195,4 @@ function logout()
 {
     window.location.href = "/logout/";
 }
+

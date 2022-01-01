@@ -1,14 +1,34 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-  Hi {{ user.first_name }} !
-  <br/> Here you can edit your profile.
-  <form action="javascript:updateProfile()" class="editprofile" >
-    <img src="{% static "imgs/default.jpg" %}" height="50px" width="50px"  >
-    <p> Your Name  : <input type="text" value = "{{ user.first_name }}" class = "txt" /> </p>
-    <p> Your Email : <input type="text" value= "{{ user.email }}" class="txt" > </p>
+Hi {{ user.first_name }} !
+<br /> Here you can edit your profile.
 
-    <input type="submit" value="Update" class="btn btnsub" />
-  </form>
-
+<input type="file" id="profile-img-chooser" onchange="previewFile()" hidden /><br>
+<form method="POST" action="/profile/" class="editprofile" >
+  {% csrf_token %}
+  <label for="profile-img-chooser">
+    <img id="profile_pic" class="profile-picture" src="{% static "imgs/default.jpg" %}" />
+  </label>
+  <div class="lbl-txt"> Your Name : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="txt_ufname" value="{{ user.first_name }}"
+      class="textbox" required> </div>
+      <div class="lbl-txt">
+        Your Last Name : <input type="text" id="txt_ulname" name="user_lastname" id="user_lastname" class="textbox" value ="{{ user.last_name }}" required >
+      </div>
+  <div class="lbl-txt">Your Username : &nbsp;&nbsp;&nbsp;<input type="text" id="txt_username" name="txt_username" id="txt-username"
+      class="textbox" value="{{ user.username }}" required> </div>
+  <div class="lbl-txt">Your Email : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text"
+    id="txt_email" value="{{ user.email }}" class="textbox" required></div>
+    <div class="lbl-txt">
+      <input type="submit" value="Update" class="btn btnsub" />
+      <input type="button" value="Home" class="btn btnsub" onclick="go_home()" />
+  </div>
+</form>
+{% if my_user %}
+  <br/>
+  {{ my_user.first_name }}
+{% endif %}
+{% if cmt %}
+  {{ cmt }}
+{% endif %}
 {% endblock %}

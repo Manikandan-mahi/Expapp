@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
+
+    {% if messages %}
+        {% for message in messages %} 
+           <p class="txt"> {{ message }} </p>
+        {% endfor %}
+    {% endif %}
     <div class="welcome-lines"> 
      Welcome to the Expenses monitoring application ! <br/>
      Please login or sign up to do expense monitoring <br/>
@@ -18,10 +24,6 @@
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim earum laudantium nostrum inventore ratione aut non repellendus et, dolor quibusdam nemo quos omnis. Tempora modi possimus molestias veritatis, quod quibusdam?
         </div>
     </section>
-    {% if messages %}
-         {% for message in messages %} 
-            {{ message }}
-         {% endfor %}
-    {% endif %}
+
 
 {% endblock %}

@@ -1,3 +1,3 @@
 window.onload = function() {
-  document.getElementById("nh").setAttribute("style", "display:none");
+  document.getElementById("nav-head-right").setAttribute("style", "display:none");
 };

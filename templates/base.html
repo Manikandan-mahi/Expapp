@@ -17,16 +17,20 @@
     <header class="header">
         
         {% if user.is_authenticated %}
-        <div class="div-title "> <button class="app-title" onclick="go_home()" > Expense Manager </button></div>
-        <nav id="nh" class="nav-header">
-            <input type="button" class="btn" onclick="go_profile()" value= "{{ user.first_name }}" /> 
+        <div class="div-title "> <button class="app-title" onclick="go_home()" > Man T </button></div>
+        <nav id="nav-head-right" class="nav">
+            <!-- <input type="button" class="btn" onclick="go_profile()" value= "{{ userimage.userimage }}" />  -->
+            <!-- <a class="btn" href="/profile/" > <img src=''  /> </a> -->
+            <input type="button" class="btn" value="Report" onclick="js_report()" />
             <input type="button" class="btn" onclick="logout()" value="Log out" /> 
         </nav>
         {% else %}
-        <div class="div-title"> <button class="app-title" onclick="go_index()" > Expense Manager </button></div>
-        <nav id="nh" class="nav-header">
-            <a href="login/" class="btn" > Login </a>  or 
-            <a href="register/" class="btn" > Sign up </a>
+        <div class="div-title"> <button class="app-title" onclick="go_index()" > Man T </button></div>
+        <nav id="nav-head-right" class="nav">
+            <ul class="nav-ul">
+                <li> <a href="login/" class="btn" > Login </a> </li>  
+                <li> <a href="register/" class="btn" > Sign up </a></li>
+            </ul>
         </nav>    
         {% endif %}
     </header>

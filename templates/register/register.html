@@ -1,9 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <form id="frm_signup"  action="../register/" method = 'POST' >
-        {% csrf_token %}
-        <table id="tbl_register" > 
+<form id="frm_signup" action="../register/" method='POST'>
+    {% csrf_token %}
+
+    {% if comment %}
+    <p class="comment"> {{ comment }} </p>
+    {% endif %}
+    <!-- <table id="tbl_register" > 
             <tr> 
                 <td>   <span class="label"> First Name  </span> </td>
                 <td> : <input type="text" class="textbox" id="txt_firstname_signin" name="txt_firstname" required="" /> <br/> </td>
@@ -28,22 +32,46 @@
             <tr> <td> <span class="label"> Enter your password  Again to confirm  </span> </td>
                 <td> : <input type="password" class="textbox" id="pwd_signin_2" name="pwd_signin_2" required="" /><br/> </td>
             </tr>
-        </table>
-        <br/>
-        <input type="submit" value="Sign Up" class="btn"  />
-        <input type="button" value="Back" class="btn" onclick="go_index()" />
+        </table> -->
+    <div class="signup-part">
+        <div class="lbl-txt">
+            <p> Your Firstname </p>
+            <input type="text" class="textbox" id="txt_firstname_signin" name="txt_firstname" required="" />
+        </div>
+        <div class="lbl-txt">
+            <p>Your Lastname </p>
+            <input type="text" class="textbox" id="txt_lastname_signin" name="txt_lastname" required="" />
+        </div>
+        <div class="lbl-txt">
+            <p>Your Email Address </p>
+            <input type="email" class="textbox" id="txt_email" name="txt_email" required="" />
+        </div>
+        <div class="lbl-txt">
+            <p>Username </p> <input type="text" class="textbox" id="txt_username_signin" name="txt_username"
+                required="" />
+        </div>
+        <div class="lbl-txt">
+            <p>Password </p> <input type="password" class="textbox" id="pwd_signin" name="pwd_signin" required="" />
+        </div>
+        <div class="lbl-txt">
+            <p>Confirm the password </p><input type="password" class="textbox" id="pwd_signin_2" name="pwd_signin_2"
+                required="" />
+        </div>
+    </div>
 
-    </form>
-    <span>
-        * Password Rules:<br/> 
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;> Must be 8 to 12 Characters.<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;> Must contain one alphabet [a-z], [A-Z] and at least one number [0-9]<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;> Must not contain any special Characters.<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;> Harder passwords are safe.<br/>
-    </span>
-    {% if comment %}
-        <p class="comment" > {{ comment }}
-    {% endif %}
+    <br />
+    <input type="submit" value="Sign Up" class="btn" />
+    <input type="button" value="Back" class="btn" onclick="go_index()" />
 
-    <script type="text/javascript" src="{% static "js/signup.js" %}" ></script>
+</form>
+<div class="pswd-rules">
+    Password Rules:
+    <ul>
+        <li>Must be 8 to 12 Characters.</li>
+        <li>Must contain one alphabet [a-z], [A-Z] and at least one number [0-9]</li>
+        <li>Must not contain any special Characters.</li>
+        <li>Harder passwords are safe.</li>
+    </ul>
+</div>    
+<script type="text/javascript" src="{% static "js/signup.js" %}"></script>
 {% endblock %}
