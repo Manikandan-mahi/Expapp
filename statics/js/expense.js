@@ -71,7 +71,7 @@ function addexp()
     var exp_id = document.getElementById('exp_id').value;
     var expense_name = document.getElementById('txt_expname').value;
     var amount = document.getElementById('txt_expamt').value;
-    var desc = document.getElementById('txt_description').value;
+    var desc = document.getElementById('txt_expdesc').value;
     var ddate = document.getElementById('appdate').value;
     var sdate = ddate.toString();
     if (amount === null || typeof amount ==="") { amount = 0 }
@@ -93,7 +93,7 @@ function addinc()
     var inc_id = document.getElementById('inc_id').value;
     var inc_name = document.getElementById('txt_incname').value;
     var amount = document.getElementById('txt_incamt').value;
-    var desc = document.getElementById('txt_description').value;
+    var desc = document.getElementById('txt_incdesc').value;
     var ddate = document.getElementById('appdate').value;
     var sdate = ddate.toString();
     if (amount === null || typeof amount ==="") { amount = 0 }
@@ -115,7 +115,7 @@ function showedit_exp( exp_id, exp_name, exp_amount , exp_desc)
     show_exp();
     document.getElementById('txt_expname').value = exp_name;
     document.getElementById('txt_expamt').value = exp_amount;
-    document.getElementById('txt_description').value = exp_desc;
+    document.getElementById('txt_expdesc').value = exp_desc;
     document.getElementById('exp_id').value = exp_id ;
 }
 
@@ -125,7 +125,7 @@ function showedit_inc( inc_id, inc_name, inc_amount , inc_desc)
     show_inc();
     document.getElementById('txt_incname').value = inc_name;
     document.getElementById('txt_incamt').value = inc_amount;
-    document.getElementById('txt_description').value = inc_desc;
+    document.getElementById('txt_incdesc').value = inc_desc;
     document.getElementById('inc_id').value = inc_id ;
 }
 
@@ -141,14 +141,20 @@ function deleteincome(incid) {
     incid = parseInt(incid);
     var ddate = document.getElementById('appdate').value;
     var sdate = ddate.toString();
-    window.location.href = "/delete/"+incid+"/"+sdate;
+    window.location.href = "/delete_inc/"+incid+"/"+sdate;
 }
 
 function js_report()
 {
     mon_list = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
      'August', 'September', 'October', 'November', 'December'];
-    var ddate = new Date(document.getElementById('appdate').value);
+    try{
+     var appdate = document.getElementById('appdate').value;
+    }
+    catch(TypeError){
+        appdate = new Date().getDate();
+    }
+    var ddate = new Date(appdate);
     var mon = mon_list[ddate.getMonth()];
     var yr = ddate.getFullYear();
     window.location.href = "/report/"+mon+"/"+yr;
@@ -173,7 +179,7 @@ function go_find()
 
 function js_find()
 {
-    var exp = document.getElementById("txt_exp").value;
+    var exp = document.getElementById("txt_txn").value;
     window.location.href = "/find/"+exp;
 }
 

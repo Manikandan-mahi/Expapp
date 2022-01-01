@@ -20,6 +20,7 @@
     text-align: center;
     padding: 2%;
     position: relative;
+    line-height: 23px;
 }
 
 .inp{
@@ -28,6 +29,7 @@
 	width: 50%;
 	padding: 8px;
 	border: 1px solid gray;
+    line-height: 23px;
 }
 
 .close_exp,

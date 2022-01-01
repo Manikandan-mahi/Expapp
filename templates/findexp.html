@@ -1,22 +1,28 @@
 {% extends 'base.html' %} 
 {% load static %}
 {% block content %}
-    Please enter the expense name to find that. <br/><br/>
-    <input type="text" name="txt_exp" id="txt_exp" class = "textbox"  /> 
+    Please enter the expense or income name to find. <br/><br/>
+    <input type="text" name="txt_txn" id="txt_txn" class = "textbox"  /> 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type = "button" id="btn_find" name="btn_find" value = "Find" class= "btn" onclick= "js_find()" /> 
-    <input type = "button" value = "Home" class="btn" onclick = "go_home()" />
+    &nbsp;&nbsp;&nbsp;&nbsp; <input type = "button" value = "Home" class="btn" onclick = "go_home()" />
     <br/> <br/>
     <div class= "report" >
-        {% if exps == "Empty" %}
-            Please enter any expense name to find !
-        {% elif exps == "Not Found" %}
-            Sorry! No expense matched with that name.
+        {% if txn_cmt == "Empty" %}
+            Please enter any name to find !
+        {% elif txn_cmt == "404" %}
+            Sorry! No transaction is matched with that name.
         {% else %}
-            {% for exp in exps %}
-                {{ exp.exp_date }} : {{ exp.exp_amount }} :  {{ exp.exp_name }}  <br/>
-            {% endfor %}
+            {% if exps %}
+                {% for exp in exps %}
+                    {{ exp.exp_date }} : Rs.{{ exp.exp_amount }} : {{ exp.exp_name }}
+                {% endfor %}
+            {% endif %}
+            {% if incs %}
+                {% for inc in incs %}
+                    {{ inc.inc_date }} : Rs.{{ inc.inc_amount }} : {{ inc.inc_name }}
+                {% endfor %}
+            {% endif %}
         {% endif %}
-        
     </div>
     <br/>    
     

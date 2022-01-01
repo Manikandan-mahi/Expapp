@@ -13,12 +13,22 @@
     Total expense of the selected month is <span class="exp-amount"> {{ totexp }} </span>
     </span>
     <br/><br/>
-    <div class="report">
-    {% for ex in exps %}
-        {{ ex.exp_date }} :  {{ ex.exp_name }} : {{ ex.exp_amount }} <br/>
-    {% endfor %}
-    </div>
+    <span class = "txt" >
+    Total Income of the selected month is <span class="exp-amount"> {{ totinc }} </span>
+    </span>
     <br/><br/>
     <input type = "button" value = "Home" class="btn" onclick = "go_home()" />
 
+    <div class="both">
+        <div class="exp-report" ><p class="exp-report-header"> Expense </p>
+            {% for ex in exps %}
+                {{ ex.exp_date }} : Rs.{{ ex.exp_amount }} : {{ ex.exp_name }}   <br/>
+            {% endfor %}
+        </div>
+        <div class="inc-report" ><p class="inc-report-header">Income </p>
+            {% for inc in incs %}
+                {{ inc.inc_date }} : Rs.{{ inc.inc_amount }} : {{ inc.inc_name }}   <br/>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %} 

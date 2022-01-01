@@ -15,7 +15,7 @@ urlpatterns = [
     path('home/<str:sdate>',views.v_home,name='Home'),
     path('profile/', views.v_profile, name="Profile"),
     path('report/<str:mon>/<str:yr>',views.v_report,name="Report"),
-    path('find/<str:p_exp_name>' , views.v_find , name = "Find" ),
+    path('find/<str:p_txn_name>' , views.v_find , name = "FindTxn" ),
     path('find/' , views.v_find , name = "Find" ),
     path('logout/',views.v_logout, name="Logout"),
     

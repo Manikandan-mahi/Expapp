@@ -72,7 +72,6 @@ def v_home(request,sdate):
         totinc = sum( [i.inc_amount for i in inc] )
         
         context = {'exps':ex,  'incs': inc, 'appdate':sdate , 'totexp':totexp, 'totinc':totinc ,'expone': False}
-
         return render(request,'Homepage.html',context)
 
 def v_profile(request):
@@ -161,31 +160,46 @@ def v_delete(request,expid,expdate):
 
 
 def v_delete_inc(request,incid,incdate):
-    exp = Expense.objects.filter(id=incid)
-    exp.delete()
+    inc = Income.objects.filter(id=incid)
+    inc.delete()
     return redirect(f"/home/{incdate}")
 
 
 def v_report(request,mon,yr):
-
     exps = Expense.objects.filter(userid = request.user, exp_month = mon, exp_year = yr)
+    incs = Income.objects.filter(userid = request.user, inc_month = mon, inc_year = yr)
     mon_dict = {'January' : '01', 'February' : '02', 'March': '03', 'April' : '04', 'May' : '05', 'June' : '06', 
     'July' : '07', 'August' : '08', 'September' : '09', 'October' : '10', 'November' : '11', 'December':'12', } 
     page_date = yr +"-" + mon_dict[mon]
     exps_o = exps.order_by('exp_date')
+    incs_o = incs.order_by('inc_date')
     exp_list = [e.exp_amount for e in exps]
+    inc_list = [i.inc_amount for i in incs]
     totexp = sum(exp_list)
-    return render(request,'Reports.html', { 'exps' : exps_o, 'page_date': page_date , 'totexp' : totexp })
+    totinc = sum(inc_list)
+    vals = {    'exps' : exps_o, 'totexp' : totexp, 'page_date': page_date ,
+                'incs' : incs_o, 'totinc' : totinc }
+    return render(request,'Reports.html', vals)
 
-def v_find(request,p_exp_name = " "):
-    if p_exp_name == " ":
-        exps="Empty"
-        return render(request,"findexp.html", { 'exps' : exps })
-    exps = Expense.objects.filter(userid = request.user, exp_name = p_exp_name)
-    if exps.count() == 0:
-        exps = "Not Found"
-        return render(request,"findexp.html", { 'exps' : exps })
-    return render(request,"findexp.html", { 'exps' : exps })
+def v_find(request,p_txn_name = " "):
+    if p_txn_name == " ":
+        txn_cmt="Empty"
+        return render(request,"findexp.html", { 'txn_cmt' : txn_cmt })
+    exps = Expense.objects.filter(userid = request.user, exp_name = p_txn_name)           
+    incs = Income.objects.filter(userid = request.user, inc_name = p_txn_name)
+    txns = list(exps) + list(incs)
+    
+    if len(txns) ==0 :
+        txt_cmt = "404"
+        return render(request,"findexp.html", { 'txn_cmt' : txt_cmt })    
+    else:
+        if incs.count() !=0 and exps.count() !=0 :    
+            return render(request,"findexp.html", { 'incs' : incs , 'exps' : exps, 'txn_cmt' : '200' }) 
+        elif incs.count() == 0 and exps.count() !=0:
+            return render(request,"findexp.html", { 'exps' : exps , 'txn_cmt' : '200'})
+        elif exps.count() == 0 and incs.count() !=0:
+            return render(request,"findexp.html", { 'incs' : incs , 'txn_cmt' : '200' })       
+        return render(request,"findexp.html", { 'txn_cmt' : '404' })    
 
 def v_logout(request):
     auth.logout(request)

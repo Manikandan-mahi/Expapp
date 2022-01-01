@@ -13,6 +13,7 @@ body
     color: black;
     position: relative;
     margin: 2vh 2vw;
+    line-height: 23px;
 }
 /* UPPER PART OF THE DOCUMENT */
 .welcome-lines{ 
@@ -70,7 +71,7 @@ body
 }
 
 .btn:hover{
-    background-color: rgb(150, 229, 231);
+    background-color: rgb(166, 231, 150);
 }
 
 .btnsub{
@@ -85,15 +86,50 @@ body
     margin: 7px;
 }
 
+.both{
+    display: flex;
+    justify-content:space-between ;
+    width: 92vw;
+    height: auto;
+    padding: 15px;
+    line-height: 23px;
+    overflow-y: scroll;
+}
+
+.exp-report{
+    background-color: rgba(240, 255, 240, 0.671);
+    width: 48%;
+    
+}
+.inc-report{
+    background-color: rgba(240, 255, 240, 0.623);
+    width: 48%;
+}
+
+.exp-report-header{
+    background-color: hotpink;
+    line-height: 23px;
+}
+
+.inc-report-header{
+    background-color: hotpink;
+    line-height: 23px;
+}
+
 .dtpk
 {
     font-size: 15px;
     font-weight: bold;
     color:darkblue;
     background-color: bisque;
-    border-radius: 10px;
+    border-radius: 15px;
+    border: 0;
+    height: 27px;
 }
-
+.dtpk:hover{
+    background-color: rgb(250, 199, 137);
+    box-shadow: 0 10px 20px rgb(126, 123, 123);
+}
 
 .txt
 {
@@ -151,7 +187,7 @@ thead{
     border: none;
 }
 thead:hover{
-    background-color: rgb(233, 110, 53);
+    background-color: #adc9e0;
 }
 
 .report
@@ -159,7 +195,7 @@ thead:hover{
     height : 57vh ; 
     width : 94vw;
     overflow-y: scroll;
-    background-color: rgb(198, 236, 236);
+    background-color: rgba(198, 236, 236, 0.644);
     color:blue;
     margin-top: 10px;
 }

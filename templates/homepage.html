@@ -17,6 +17,9 @@
            <p>Total Expense amount for the day is : {{ totexp }}  </p>
            <p>Total Income for the day is : {{ totinc }} </p>
         </span>
+
+        <input type="button" class="btn" value="Find Transactions" onclick="go_find()" />
+
     </div>
 
 
@@ -29,15 +32,13 @@
                <input type="text" hidden="" id="exp_id" />
                <input type="text" class="inp" id="txt_expname" name="txt_expname" placeholder="Enter the expense name" required />
                <input type="text" class="inp" id="txt_expamt" name="txt_expamt" placeholder="Enter the amount" required />
-               <textarea  rows=3 cols=10 class="inp" id="txt_description" name="txt_description" placeholder="Feel free to describe the expense here! Kindly do not include slash(/) ."></textarea>
+               <textarea  rows=3 cols=10 class="inp" id="txt_expdesc" name="txt_description" placeholder="Feel free to describe the expense here! Kindly do not include slash(/) ."></textarea>
                <input type="submit" value="Save" class="btn"/>
             </form>          
        </div>
    </div> 
    <div class="div-menus">
         <input type="button" class="btn" id="btn_showAdd" name="btn_showAdd" value="Add Expense" onclick="show_exp()" />
-        
-        <input type="button" class="btn" value="Find Expense" onclick="go_find()" />
     </div>
     <div class="report" >
        <br/>   
@@ -51,7 +52,7 @@
                 <td class="amount" > {{ exp.exp_amount }} </td>
                 <td> {{ exp.exp_desc }} </td>
                 <td> 
-                    <input type="button" value="✎" class = "del" onclick="showedit('{{ exp.id }}', '{{ exp.exp_name }}', ' {{ exp.exp_amount }}' , '{{ exp.exp_desc }}' )" > 
+                    <input type="button" value="✎" class = "del" onclick="showedit_exp('{{ exp.id }}', '{{ exp.exp_name }}', ' {{ exp.exp_amount }}' , '{{ exp.exp_desc }}' )" > 
                 </td>
                 <td>  
                     <input type="button" value="✘" class = "del" onclick="deleteexpense( '{{ exp.id }}' )" > 
@@ -71,19 +72,19 @@
                <input type="text" hidden="" id="inc_id" />
                <input type="text" class="inp" id="txt_incname" name="txt_incname" placeholder="Enter the Income name" required />
                <input type="text" class="inp" id="txt_incamt" name="txt_incamt" placeholder="Enter the amount" required />
-               <textarea  rows=3 cols=10 class="inp" id="txt_description" name="txt_description" placeholder="Feel free to describe the Income here! Kindly do not include slash(/) ."></textarea>
+               <textarea  rows=3 cols=10 class="inp" id="txt_incdesc" name="txt_description" placeholder="Feel free to describe the Income here! Kindly do not include slash(/) ."></textarea>
                <input type="submit" value="Save" class="btn"/>
             </form>          
        </div>
    </div> 
     <div class="div-menus">
         <input type="button" class="btn" id="btn_showAdd" name="btn_showAdd" value="Add Income" onclick="show_inc()" />
-        <input type="button" class="btn" value="Find Income" onclick="go_find()" />
+        
     </div>
     <div class="report" >
        <br/>   
        <!--This table needs to be redesigned with CSS GRID or Flexbox -->
-        <table id="exptable" > 
+        <table id="inctable" > 
                <thead><tr> <th> </th> <th> Income name </th> <th> Amount (In Rs.) </th> <th> Description about the Income </th> <th> Edit </th> <th> Delete </th> </tr> </thead> 
             {% for inc in incs %}
             <tr>
@@ -92,10 +93,10 @@
                 <td class="amount" > {{ inc.inc_amount }} </td>
                 <td> {{ inc.inc_desc }} </td>
                 <td> 
-                    <input type="button" value="✎" class = "del" onclick="showedit('{{ exp.id }}', '{{ exp.exp_name }}', ' {{ exp.exp_amount }}' , '{{ exp.exp_desc }}' )" > 
+                    <input type="button" value="✎" class = "del" onclick="showedit_inc('{{ inc.id }}', '{{ inc.inc_name }}', ' {{ inc.inc_amount }}' , '{{ inc.inc_desc }}' )" > 
                 </td>
                 <td>  
-                    <input type="button" value="✘" class = "del" onclick="deleteexpense( '{{ exp.id }}' )" > 
+                    <input type="button" value="✘" class = "del" onclick="deleteincome( '{{ inc.id }}' )" > 
                 </td>
             </tr>    
             {% endfor %}
